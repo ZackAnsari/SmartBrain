@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt-nodejs");
 const app = express();
 const cors = require("cors");
 const knex = require('knex');
+require('dotenv').config();
 
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
@@ -13,10 +14,13 @@ const image = require('./controllers/image');
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      user : 'zackansari',
-      password : '',
-      database : 'smart-brain'
+      connectionString: process.env.DATABASE_URL,
+      ssl:{rejectUnauthorized: false},
+      host : process.env.DATABASE_HOST,
+      port:5432,
+      user : process.env.DATABASE_USER,
+      password : process.env.DATABASE_PW,
+      database : process.env.DATABASE_DB
     }
   });
 
