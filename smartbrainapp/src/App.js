@@ -117,7 +117,7 @@ class App extends Component {
       .then((response) => {
         // console.log("hi", response.outputs[0].data.regions[0].region_info.bounding_box);
         if (response) {
-          fetch('http://localhost:3000/image', {
+          fetch('https://smartbrain-backend-inqh.onrender.com/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
